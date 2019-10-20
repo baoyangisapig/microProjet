@@ -13,6 +13,7 @@ public class ExpressionTreeTest {
   public void constructor() throws Exception {
     ExpressionTree tree = new ExpressionTree("2");
     tree = new ExpressionTree("1 2 +");
+    tree = new ExpressionTree("");
     tree = new ExpressionTree("1.2 5.4 *   -4.5 + ");
     tree = new ExpressionTree("3 2 + 65.12 -");
     tree = new ExpressionTree("3 5 + 4 -");
