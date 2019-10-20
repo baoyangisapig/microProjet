@@ -5,14 +5,23 @@ import java.util.Stack;
 import generictree.AbstractTreeNode;
 import generictree.GroupNode;
 import generictree.LeafNode;
-import generictree.ValidationUtil;
 
+/**
+ * The class represents a interval tree with all the intervals and operations.
+ */
 public class IntervalTree implements Intervals {
+
 
   private static final String INVALID_INTERVAL_EXPRESSION = "Invalid interval expression.";
 
   AbstractTreeNode<String> root;
 
+  /**
+   * The constructor for IntervalTree.
+   *
+   * @param expression the String express the interval tree.
+   * @throws IllegalArgumentException
+   */
   public IntervalTree(String expression) throws IllegalArgumentException {
     if (expression == null || expression.trim().isEmpty()) {
       return;
@@ -49,8 +58,26 @@ public class IntervalTree implements Intervals {
     }
   }
 
+
   @Override
   public Interval evaluate() {
-    return null;
+    if (root == null) return null;
+    return helpEvaluate(root);
+  }
+
+  private Interval helpEvaluate(AbstractTreeNode<String> root) {
+    if (root.getClass().getName().equals(LeafNode.class.getName())) {
+      String[] times = root.value.split(",");
+      int start = Integer.parseInt(times[0]);
+      int end = Integer.parseInt(times[1]);
+      return new Interval(start, end);
+    } else {
+      GroupNode node = (GroupNode) root;
+      if (root.value.equals("U")) {
+        return helpEvaluate(node.left).union(helpEvaluate(node.right));
+      } else {
+        return helpEvaluate(node.left).intersect(helpEvaluate(node.right));
+      }
+    }
   }
 }
