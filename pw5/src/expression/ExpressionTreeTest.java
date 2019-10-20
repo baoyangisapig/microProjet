@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ExpressionTreeTest {
 
@@ -53,7 +54,7 @@ public class ExpressionTreeTest {
   public void infix() {
   }
 
-  @org.junit.Test
+  @Test
   public void schemeExpression() {
   }
 }
