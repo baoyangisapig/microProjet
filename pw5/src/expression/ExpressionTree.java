@@ -7,12 +7,22 @@ import generictree.GroupNode;
 import generictree.LeafNode;
 import generictree.ValidationUtil;
 
+/**
+ * The class represents all the operations in a expression tree, including all the operations and
+ * operands in a expression.
+ */
 public class ExpressionTree implements Expression {
 
   AbstractTreeNode<String> root;
 
   private static final String INVALID_EXPRESSION = "Invalid Expression!";
 
+  /**
+   * Constructs a express tree with a postOrder String.
+   *
+   * @param postfix The string used to build a express tree.
+   * @throws IllegalArgumentException
+   */
   public ExpressionTree(String postfix) throws IllegalArgumentException {
     if (postfix == null || postfix.trim().isEmpty()) {
       return;

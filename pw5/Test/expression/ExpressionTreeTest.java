@@ -5,9 +5,13 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * The class represents the Junit Test for ExpressionTree.
+ */
 public class ExpressionTreeTest {
 
   private static String FAIL_INFO = "Should have thrown an exception!";
+
 
   @Test
   public void constructor() throws Exception {
@@ -52,8 +56,8 @@ public class ExpressionTreeTest {
     Assert.assertEquals(expressionTree1.evaluate(), 4, 0.1);
     ExpressionTree expressionTree2 = new ExpressionTree("3");
     Assert.assertEquals(expressionTree2.evaluate(), 3, 0.1);
-    ExpressionTree expressionTree3=new ExpressionTree("");
-    Assert.assertEquals(expressionTree3.evaluate(),0,0.1);
+    ExpressionTree expressionTree3 = new ExpressionTree("");
+    Assert.assertEquals(expressionTree3.evaluate(), 0, 0.1);
   }
 
   @Test
@@ -62,7 +66,7 @@ public class ExpressionTreeTest {
     Assert.assertTrue(expressionTree.infix().equals("((1.2*5.4)+-4.5)"));
     ExpressionTree expressionTree2 = new ExpressionTree("3");
     Assert.assertTrue(expressionTree2.infix().equals("3"));
-    ExpressionTree expressionTree3=new ExpressionTree("");
+    ExpressionTree expressionTree3 = new ExpressionTree("");
     Assert.assertTrue(expressionTree3.infix().equals(""));
   }
 
@@ -72,7 +76,7 @@ public class ExpressionTreeTest {
     Assert.assertTrue(expressionTree.schemeExpression().equals("(+(*1.25.4)-4.5)"));
     ExpressionTree expressionTree2 = new ExpressionTree("3");
     Assert.assertTrue(expressionTree2.infix().equals("3"));
-    ExpressionTree expressionTree3=new ExpressionTree("");
+    ExpressionTree expressionTree3 = new ExpressionTree("");
     Assert.assertTrue(expressionTree3.infix().equals(""));
   }
 }
