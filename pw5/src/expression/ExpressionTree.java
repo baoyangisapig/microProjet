@@ -14,15 +14,12 @@ public class ExpressionTree implements Expression {
   private static final String INVALID_EXPRESSION = "Invalid Expression!";
 
   public ExpressionTree(String postfix) throws IllegalArgumentException {
-    String[] strs = postfix.trim().split("\\s+");
-    if (strs.length == 0) {
+    if (postfix == null || postfix.trim().isEmpty()) {
       return;
     }
+    String[] strs = postfix.trim().split("\\s+");
     if (strs.length == 1) {
       String str = strs[0];
-      if (str.isEmpty()) {
-        return;
-      }
       if (!ValidationUtil.isValid(str)) {
         throw new IllegalArgumentException(INVALID_EXPRESSION);
       }
@@ -62,7 +59,7 @@ public class ExpressionTree implements Expression {
   }
 
   private double helpEvaluate(AbstractTreeNode<String> root) {
-    if (root.getClass().getName().equals(LeafNode.class.getName())) {
+    if (root instanceof LeafNode) {
       return Double.parseDouble(root.value);
     } else {
       GroupNode node = (GroupNode) root;
@@ -89,7 +86,7 @@ public class ExpressionTree implements Expression {
   }
 
   private String inOrderTraverse(AbstractTreeNode<String> root) {
-    if (root.getClass().getName().equals(LeafNode.class.getName())) {
+    if (root instanceof LeafNode) {
       return root.value;
     } else {
       StringBuilder sb = new StringBuilder();
@@ -106,7 +103,7 @@ public class ExpressionTree implements Expression {
   }
 
   private String preOrderTraverse(AbstractTreeNode<String> root) {
-    if (root.getClass().getName().equals(LeafNode.class.getName())) {
+    if (root instanceof LeafNode) {
       return root.value;
     } else {
       StringBuilder sb = new StringBuilder();
