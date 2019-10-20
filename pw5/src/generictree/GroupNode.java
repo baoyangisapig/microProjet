@@ -13,15 +13,15 @@ public class GroupNode<T> extends AbstractTreeNode<T> {
   }
 
   @Override
-  public TreeNode<T> addChild(TreeNode<T> child) {
-    if(child==null||(getLeft()!=null&&getRight()!=null))return this;
-      if(left!=null){
-        left=child;
-      }
-      else{
-        right=child;
-      }
-      return this;
+  public void addChild(TreeNode<T> child) throws IllegalArgumentException {
+    if (child == null || (getLeft() != null && getRight() != null)) {
+      throw new IllegalArgumentException("Invalid Expression!");
+    }
+    if (left != null) {
+      left = child;
+    } else {
+      right = child;
+    }
+    return;
   }
-
 }

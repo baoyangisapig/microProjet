@@ -1,6 +1,11 @@
 package expression;
 
+import generictree.AbstractTreeNode;
+
 public class ExpressionTree implements Expression {
+
+  AbstractTreeNode<String> root;
+
   public ExpressionTree(String postfix) {
   }
 
