@@ -15,6 +15,20 @@ public class ExpressionTree implements Expression {
 
   public ExpressionTree(String postfix) throws IllegalArgumentException {
     String[] strs = postfix.trim().split("\\s+");
+    if (strs.length == 0) {
+      return;
+    }
+    if (strs.length == 1) {
+      String str = strs[0];
+      if (!ValidationUtil.isValid(str)) {
+        throw new IllegalArgumentException(INVALID_EXPRESSION);
+      }
+      if (!ValidationUtil.isDouble(str)) {
+        throw new IllegalArgumentException(INVALID_EXPRESSION);
+      }
+      this.root = new LeafNode<>(str);
+      return;
+    }
     Stack<AbstractTreeNode<String>> stack = new Stack<>();
     for (int i = 0; i < strs.length; i++) {
       if (!ValidationUtil.isValid(strs[i])) {
@@ -32,6 +46,9 @@ public class ExpressionTree implements Expression {
         stack.push(curRoot);
         this.root = curRoot;
       }
+    }
+    if (stack.size() > 1) {
+      throw new IllegalArgumentException(INVALID_EXPRESSION);
     }
   }
 
