@@ -20,6 +20,9 @@ public class ExpressionTree implements Expression {
     }
     if (strs.length == 1) {
       String str = strs[0];
+      if (str.isEmpty()) {
+        return;
+      }
       if (!ValidationUtil.isValid(str)) {
         throw new IllegalArgumentException(INVALID_EXPRESSION);
       }
