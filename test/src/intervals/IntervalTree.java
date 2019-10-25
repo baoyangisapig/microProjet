@@ -5,7 +5,6 @@ import java.util.Stack;
 import generictree.AbstractTreeNode;
 import generictree.GroupNode;
 import generictree.LeafNode;
-import generictree.TreeUtil;
 
 /**
  * The class represents a interval tree with all the intervals and operations.
@@ -64,12 +63,6 @@ public class IntervalTree implements Intervals {
   public Interval evaluate() {
     if (root == null) return null;
     return helpEvaluate(root);
-  }
-
-  @Override
-  public String textTree() {
-    if (root == null) return "";
-    return TreeUtil.helpText(root).getKey();
   }
 
   private Interval helpEvaluate(AbstractTreeNode<String> root) {

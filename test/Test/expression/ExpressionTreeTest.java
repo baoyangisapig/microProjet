@@ -1,9 +1,10 @@
 package expression;
 
-import org.junit.Assert;
-import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.fail;
 
 /**
  * The class represents the Junit Test for ExpressionTree.

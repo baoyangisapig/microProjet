@@ -5,7 +5,7 @@ import java.util.Stack;
 import generictree.AbstractTreeNode;
 import generictree.GroupNode;
 import generictree.LeafNode;
-import generictree.TreeUtil;
+import generictree.ValidationUtil;
 
 /**
  * The class represents all the operations in a expression tree, including all the operations and
@@ -30,10 +30,10 @@ public class ExpressionTree implements Expression {
     String[] strs = postfix.trim().split("\\s+");
     if (strs.length == 1) {
       String str = strs[0];
-      if (!TreeUtil.isValid(str)) {
+      if (!ValidationUtil.isValid(str)) {
         throw new IllegalArgumentException(INVALID_EXPRESSION);
       }
-      if (!TreeUtil.isDouble(str)) {
+      if (!ValidationUtil.isDouble(str)) {
         throw new IllegalArgumentException(INVALID_EXPRESSION);
       }
       this.root = new LeafNode<>(str);
@@ -41,10 +41,10 @@ public class ExpressionTree implements Expression {
     }
     Stack<AbstractTreeNode<String>> stack = new Stack<>();
     for (int i = 0; i < strs.length; i++) {
-      if (!TreeUtil.isValid(strs[i])) {
+      if (!ValidationUtil.isValid(strs[i])) {
         throw new IllegalArgumentException(INVALID_EXPRESSION);
       }
-      if (TreeUtil.isDouble(strs[i])) {
+      if (ValidationUtil.isDouble(strs[i])) {
         stack.push(new LeafNode(strs[i]));
       } else {
         GroupNode<String> curRoot = new GroupNode<>(strs[i]);
@@ -111,13 +111,6 @@ public class ExpressionTree implements Expression {
     if (root == null) return "";
     return preOrderTraverse(root);
   }
-
-  @Override
-  public String textTree() {
-    if (root == null) return "";
-    return TreeUtil.helpText(root).getKey();
-  }
-
 
   private String preOrderTraverse(AbstractTreeNode<String> root) {
     if (root instanceof LeafNode) {
