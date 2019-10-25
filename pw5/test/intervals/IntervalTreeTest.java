@@ -10,7 +10,6 @@ import org.junit.Test;
 public class IntervalTreeTest {
 
   @Test
-
   public void evaluate() {
     IntervalTree tree11 = new IntervalTree("");
     IntervalTree tree = new IntervalTree(" 1,2 3,4 4,6 U 3,5 I U ");
@@ -25,7 +24,6 @@ public class IntervalTreeTest {
     IntervalTree tree3 = new IntervalTree("");
     Assert.assertNull(tree3.evaluate());
     IntervalTree tree4 = new IntervalTree("1,6 2,5 I 1,6 1,2 3,4 4,6 U 3,5 I U I U");
-    System.out.println(tree4.textTree());
   }
 
   @Test

@@ -69,7 +69,7 @@ public class IntervalTree implements Intervals {
   @Override
   public String textTree() {
     if (root == null) return "";
-    return TreeUtil.helpText(root).getKey();
+    return TreeUtil.helpText(root);
   }
 
   private Interval helpEvaluate(AbstractTreeNode<String> root) {

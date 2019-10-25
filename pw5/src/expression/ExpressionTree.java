@@ -115,7 +115,7 @@ public class ExpressionTree implements Expression {
   @Override
   public String textTree() {
     if (root == null) return "";
-    return TreeUtil.helpText(root).getKey();
+    return TreeUtil.helpText(root);
   }
 
 

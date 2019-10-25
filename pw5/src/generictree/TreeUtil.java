@@ -63,31 +63,20 @@ public class TreeUtil {
    * @param root The root of the tree.
    * @return The structure of the tree in a String format.
    */
-  public static Pair<String, Integer> helpText(AbstractTreeNode<String> root) {
+  public static String helpText(AbstractTreeNode<String> root) {
     if (root.getClass().getName().equals(LeafNode.class.getName())) {
-      return new Pair<>(root.value, 0);
+      return root.value;
     }
     GroupNode cur = (GroupNode) root;
-    Pair<String, Integer> leftPair = transformleft(helpText(cur.left));
-    Pair<String, Integer> rightPair = transformRight(helpText(cur.right));
+    String leftPair = helpText(cur.left).replace("\n", "\n|   ");
+    String rightPair = helpText(cur.right).replace("\n", "\n   ");
     StringBuilder tree = new StringBuilder();
-    tree.append(root.value).append("\n|\n|\n|___").append(leftPair.getKey());
+    tree.append(root.value).append("\n|\n|\n|___").append(leftPair);
     for (int i = 1; i <= 2; i++) {
       tree.append("\n|");
     }
-    tree.append("___").append(rightPair.getKey());
-    return new Pair<>(String.valueOf(tree), 5 + leftPair.getValue() + rightPair.getValue());
+    tree.append("___").append(rightPair);
+    return String.valueOf(tree);
   }
 
-  private static Pair<String, Integer> transformleft(Pair<String, Integer> pair) {
-    String tree = pair.getKey();
-    String newTree = tree.replace("\n", "\n|   ");
-    return new Pair<>(newTree, pair.getValue());
-  }
-
-  private static Pair<String, Integer> transformRight(Pair<String, Integer> pair) {
-    String tree = pair.getKey();
-    String newTree = tree.replace("\n", "\n   ");
-    return new Pair<>(newTree, pair.getValue());
-  }
 }
