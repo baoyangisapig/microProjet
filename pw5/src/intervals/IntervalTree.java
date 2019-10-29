@@ -2,10 +2,10 @@ package intervals;
 
 import java.util.Stack;
 
-import generictree.AbstractTreeNode;
-import generictree.GroupNode;
-import generictree.LeafNode;
-import generictree.TreeUtil;
+import genericNode.AbstractTreeNode;
+import genericNode.GroupNode;
+import genericNode.LeafNode;
+import genericNode.TreeUtil;
 
 /**
  * The class represents a interval tree with all the intervals and operations.

@@ -1,9 +1,11 @@
-package generictree;
+package genericNode;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import javafx.util.Pair;
+import genericNode.AbstractTreeNode;
+import genericNode.GroupNode;
+import genericNode.LeafNode;
 
 /**
  * Check validation of input of the {@link expression.ExpressionTree}.

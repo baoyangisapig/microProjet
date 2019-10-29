@@ -1,4 +1,6 @@
-package generictree;
+package genericNode;
+
+import genericNode.AbstractTreeNode;
 
 /**
  * Node for numeric values only.
@@ -8,7 +10,7 @@ package generictree;
 public class LeafNode<T> extends AbstractTreeNode<T> {
 
   /**
-   * Constructor of LeafNode.
+   * Constructor of genericNode.LeafNode.
    *
    * @param value Value of current leaf node.
    */
